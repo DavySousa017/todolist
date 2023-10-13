@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../context/appContext";
 
 const Tasks = (props) => {
+  const { tasks, setTasks } = useContext(AppContext);
+  var updatedTasks = [];
+
+  const deleteTask = (text) => {
+    updatedTasks = tasks.filter((task) => task.text !== text);
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className="rounded-2xl w-full bg-persongray_500 p-4 flex flex-row items-center justify-between gap-4">
       <button>
@@ -17,7 +26,7 @@ const Tasks = (props) => {
         </svg>
       </button>
       <p className="text-start w-full">{props.text}</p>
-      <button>
+      <button onClick={() => deleteTask(props.text)} type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
