@@ -3,14 +3,20 @@ import React, { useContext, useState } from "react";
 import AppContext from "../context/appContext";
 
 const NewTask = () => {
-  const [searchValue, setSearchValuer] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const { tasks, setTasks } = useContext(AppContext);
 
   const data = { text: searchValue };
 
   const Submit = (e) => {
     e.preventDefault();
-    setTasks([...tasks, data]);
+
+    const taskExists = tasks.find((task) => task.text === data.text);
+
+    if (!taskExists) {
+      setTasks([...tasks, data]);
+      setSearchValue("");
+    } else alert("Tarefa já existe");
   };
 
   return (
@@ -45,7 +51,7 @@ const NewTask = () => {
       >
         <input
           value={searchValue}
-          onChange={(e) => setSearchValuer(e.target.value)}
+          onChange={(e) => setSearchValue(e.target.value)}
           type="text"
           required
           className="p-4 h-14 w-full max-w-[640px] rounded-lg bg-persongray_500 border border-personblack outline-none focus:border-blue duration-300"

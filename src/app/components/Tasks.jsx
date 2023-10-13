@@ -2,17 +2,26 @@ import React, { useContext } from "react";
 import AppContext from "../context/appContext";
 
 const Tasks = (props) => {
-  const { tasks, setTasks } = useContext(AppContext);
+  const { tasks, setTasks, tasksComplete, setTasksComplete } =
+    useContext(AppContext);
   var updatedTasks = [];
 
-  const deleteTask = (text) => {
-    updatedTasks = tasks.filter((task) => task.text !== text);
+  const deleteTask = (value) => {
+    updatedTasks = tasks.filter((task) => task.text !== value);
+    setTasks(updatedTasks);
+  };
+
+  const completeTask = (value) => {
+    const data = { value, complete: true };
+    setTasksComplete([...tasksComplete, data]);
+    console.log(tasksComplete);
+    updatedTasks = tasks.filter((task) => task.text !== value);
     setTasks(updatedTasks);
   };
 
   return (
     <div className="rounded-2xl w-full bg-persongray_500 p-4 flex flex-row items-center justify-between gap-4">
-      <button>
+      <button onClick={() => completeTask(props.text)} type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
