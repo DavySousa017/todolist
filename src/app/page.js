@@ -1,9 +1,9 @@
-import Navbar from './components/Navbar'
+import NewTask from './components/NewTask'
 
 export default function Home() {
   return (
-    <main className='min-h-screen flex items-center justify-center'>
-
+    <main className='min-h-screen bg-persongray'>
+      <NewTask/>
     </main>
   )
 }

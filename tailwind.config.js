@@ -8,6 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        blue: '#4EA8DE',
+        purpleDark: '#5E60CE',
+        personblack: '#0D0D0D',
+        persongray: '#1A1A1A',
+        persongray_500: '#262626'
       }
     },
   },
