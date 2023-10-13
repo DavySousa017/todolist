@@ -1,6 +1,18 @@
-import React from "react";
+"use client";
+import React, { useContext, useState } from "react";
+import AppContext from "../context/appContext";
 
 const NewTask = () => {
+  const [searchValue, setSearchValuer] = useState("");
+  const { tasks, setTasks } = useContext(AppContext);
+
+  const data = { text: searchValue };
+
+  const Submit = (e) => {
+    e.preventDefault();
+    setTasks([...tasks, data]);
+  };
+
   return (
     <div className="bg-personblack h-[150px] w-full flex justify-center items-center relative">
       <div className="flex items-center text-3xl font-black">
@@ -27,12 +39,18 @@ const NewTask = () => {
           todo
         </h1>
       </div>
-      <div className="flex items-center justify-center absolute -bottom-[30px] w-full px-3">
+      <form
+        onSubmit={Submit}
+        className="flex items-center justify-center absolute -bottom-[30px] w-full px-3"
+      >
         <input
+          value={searchValue}
+          onChange={(e) => setSearchValuer(e.target.value)}
           type="text"
+          required
           className="p-4 h-14 w-full max-w-[640px] rounded-lg bg-persongray_500 border border-personblack outline-none focus:border-blue duration-300"
         />
-      </div>
+      </form>
     </div>
   );
 };

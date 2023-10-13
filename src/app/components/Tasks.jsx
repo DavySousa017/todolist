@@ -1,6 +1,6 @@
 import React from "react";
 
-const Tasks = () => {
+const Tasks = (props) => {
   return (
     <div className="rounded-2xl w-full bg-persongray_500 p-4 flex flex-row items-center justify-between gap-4">
       <button>
@@ -16,10 +16,7 @@ const Tasks = () => {
           />
         </svg>
       </button>
-      <p className="text-justify">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat quas
-        est, libero unde odio qui labore tempora at perspiciatis laudantium!
-      </p>
+      <p className="text-start w-full">{props.text}</p>
       <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
