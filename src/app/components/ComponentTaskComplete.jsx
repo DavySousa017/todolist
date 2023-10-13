@@ -2,17 +2,25 @@ import React, { useContext } from "react";
 import AppContext from "../context/appContext";
 
 const ComponentTaskComplet = (props) => {
-  const { tasksComplete, setTasksComplete } = useContext(AppContext);
+  const { tasksComplete, setTasksComplete, tasks, setTasks } =
+    useContext(AppContext);
   var updatedTasks = [];
 
   const deleteTask = (value) => {
-    updatedTasks = tasksComplete.filter((task) => task.value !== value);
+    updatedTasks = tasksComplete.filter((task) => task.text !== value);
+    setTasksComplete(updatedTasks);
+  };
+
+  const removeComplete = (value) => {
+    updatedTasks = tasksComplete.find((task) => task.text == value);
+    setTasks([...tasks, updatedTasks]);
+    updatedTasks = tasksComplete.filter((task) => task.text !== value);
     setTasksComplete(updatedTasks);
   };
 
   return (
     <div className="rounded-2xl w-full bg-persongray_500 p-4 flex flex-row items-center justify-between gap-4">
-      <button>
+      <button onClick={() => removeComplete(props.text)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -34,8 +42,8 @@ const ComponentTaskComplet = (props) => {
           <path fill="#4ea8de" d="M0 0h48v48H0z" mask="url(#ipSCorrect0)" />
         </svg>
       </button>
-      <p className="text-start w-full">{props.text.value}</p>
-      <button onClick={() => deleteTask(props.text.value)} type="button">
+      <p className="text-start w-full">{props.text}</p>
+      <button onClick={() => deleteTask(props.text)} type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

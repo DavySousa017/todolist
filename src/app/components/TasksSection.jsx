@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import Tasks from "./Tasks";
-import ComponentTaskComplet from "./ComponentTaskComplete";
+import ComponentTask from "./ComponentTask";
 import AppContext from "../context/appContext";
+import ComponentTaskComplet from "./ComponentTaskComplete";
 
 const TasksSection = () => {
   const { tasks, tasksComplete } = useContext(AppContext);
+
+  const total = tasks.length + tasksComplete.length;
 
   return (
     <section className="flex justify-center pt-16">
@@ -13,7 +15,7 @@ const TasksSection = () => {
           <span className="flex items-center gap-1 text-blue">
             Tarefas criadas{" "}
             <span className="w-6 h-6 rounded-full bg-persongray_500 flex items-center justify-center">
-              {tasks.length}
+              {total}
             </span>
           </span>
           <span className="flex items-center gap-1 text-purpleDark">
@@ -26,12 +28,12 @@ const TasksSection = () => {
         <div className="flex flex-col gap-3 mt-5">
           {tasks.map((item) => (
             <div key={item.text}>
-              <Tasks text={item.text} />
+              <ComponentTask text={item.text} />
             </div>
           ))}
           {tasksComplete.map((item) => (
-            <div key={item.value}>
-              <ComponentTaskComplet text={item} />
+            <div key={item.text}>
+              <ComponentTaskComplet text={item.text} />
             </div>
           ))}
         </div>

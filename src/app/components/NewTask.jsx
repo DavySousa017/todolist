@@ -4,7 +4,7 @@ import AppContext from "../context/appContext";
 
 const NewTask = () => {
   const [searchValue, setSearchValue] = useState("");
-  const { tasks, setTasks } = useContext(AppContext);
+  const { tasks, setTasks, tasksComplete } = useContext(AppContext);
 
   const data = { text: searchValue };
 
@@ -12,8 +12,11 @@ const NewTask = () => {
     e.preventDefault();
 
     const taskExists = tasks.find((task) => task.text === data.text);
+    const taskCompleteExists = tasksComplete.find(
+      (task) => task.text === data.text
+    );
 
-    if (!taskExists) {
+    if (!taskExists && !taskCompleteExists) {
       setTasks([...tasks, data]);
       setSearchValue("");
     } else alert("Tarefa já existe");

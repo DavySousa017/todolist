@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AppContext from "../context/appContext";
 
-const Tasks = (props) => {
+const ComponentTask = (props) => {
   const { tasks, setTasks, tasksComplete, setTasksComplete } =
     useContext(AppContext);
   var updatedTasks = [];
@@ -12,16 +12,14 @@ const Tasks = (props) => {
   };
 
   const completeTask = (value) => {
-    const data = { value, complete: true };
-    setTasksComplete([...tasksComplete, data]);
-    console.log(tasksComplete);
-    updatedTasks = tasks.filter((task) => task.text !== value);
+    setTasksComplete([...tasksComplete, value]);
+    updatedTasks = tasks.filter((task) => task.text !== value.text);
     setTasks(updatedTasks);
   };
 
   return (
     <div className="rounded-2xl w-full bg-persongray_500 p-4 flex flex-row items-center justify-between gap-4">
-      <button onClick={() => completeTask(props.text)} type="button">
+      <button onClick={() => completeTask(props)} type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -35,7 +33,7 @@ const Tasks = (props) => {
         </svg>
       </button>
       <p className="text-start w-full">{props.text}</p>
-      <button onClick={() => deleteTask(props.text)} type="button">
+      <button onClick={() => deleteTask(props)} type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -51,4 +49,4 @@ const Tasks = (props) => {
   );
 };
 
-export default Tasks;
+export default ComponentTask;
