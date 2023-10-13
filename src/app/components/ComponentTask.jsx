@@ -7,7 +7,7 @@ const ComponentTask = (props) => {
   var updatedTasks = [];
 
   const deleteTask = (value) => {
-    updatedTasks = tasks.filter((task) => task.text !== value);
+    updatedTasks = tasks.filter((task) => task.text !== value.text);
     setTasks(updatedTasks);
   };
 
