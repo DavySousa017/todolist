@@ -61,7 +61,7 @@ const NewTask = () => {
         />
         <button
           type="submit"
-          className="w-[90px] h-full bg-blue font-bold rounded-lg flex items-center justify-center gap-1"
+          className="w-[90px] h-full bg-blue font-bold rounded-lg flex items-center justify-center gap-1 p-2"
         >
           Criar
           <span>
