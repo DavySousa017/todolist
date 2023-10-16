@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useState } from "react";
-import AppContext from "../context/appContext";
+import AppContext from "app/context/AppContext.js";
 
 const NewTask = () => {
   const [searchValue, setSearchValue] = useState("");

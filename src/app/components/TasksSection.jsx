@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ComponentTask from "./ComponentTask";
-import AppContext from "../context/appContext";
+import AppContext from "app/context/AppContext.js";
 import ComponentTaskComplet from "./ComponentTaskComplete";
 
 const TasksSection = () => {

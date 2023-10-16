@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AppContext from "../context/appContext";
+import AppContext from "app/context/AppContext.js";
 
 const ComponentTaskComplet = (props) => {
   const { tasksComplete, setTasksComplete, tasks, setTasks } =
