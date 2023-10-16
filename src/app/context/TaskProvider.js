@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AppContext from "app/context/AppContext.js";
+import AppContext from "./AppContext";
 
 const AppContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
